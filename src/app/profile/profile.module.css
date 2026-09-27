@@ -1,0 +1,204 @@
+.intro {
+  padding-bottom: 96px;
+}
+.portrait {
+  margin: 0 calc(var(--gutter) * -1);
+}
+.text {
+  margin-top: 40px;
+}
+.name {
+  font-size: 28px;
+  letter-spacing: 0.18em;
+  line-height: 1.5;
+}
+.nameEn {
+  display: block;
+  font-family: var(--f-en);
+  font-size: 16px;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  color: var(--c-brown);
+}
+.role {
+  margin-top: 6px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--c-ink-soft);
+}
+.body {
+  margin-top: 36px;
+}
+.subhead {
+  margin: 56px 0 16px;
+  font-size: 16px;
+  letter-spacing: 0.14em;
+}
+.exp {
+  border-top: 1px solid var(--c-line);
+}
+.exp > div {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--c-line);
+}
+.exp dt {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+.exp dd {
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--c-ink-soft);
+}
+.ig {
+  display: flex;
+  flex-direction: column;
+  margin-top: 48px;
+}
+.ig > span {
+  font-family: var(--f-en);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--c-brown);
+}
+
+.fields {
+  background: var(--c-paper-deep);
+  padding: 88px 0 96px;
+}
+.fieldsTitle {
+  margin-top: 20px;
+}
+.fieldList {
+  margin-top: 40px;
+  border-top: 1px solid var(--c-line);
+}
+.fieldList li {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  padding: 26px 0 28px;
+  border-bottom: 1px solid var(--c-line);
+}
+.fieldNo {
+  font-family: var(--f-en);
+  font-size: 15px;
+  line-height: 2;
+  color: var(--c-brown);
+}
+.fieldJa {
+  font-size: 19px;
+  letter-spacing: 0.12em;
+}
+.fieldJa span {
+  display: block;
+  font-family: var(--f-en);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--c-ink-soft);
+  line-height: 1.5;
+}
+.fieldText {
+  grid-column: 2;
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.thought {
+  padding-top: 96px;
+  padding-bottom: 120px;
+}
+.thoughtPhoto {
+  margin-right: calc(var(--gutter) * -1);
+}
+.thoughtText {
+  margin-top: 48px;
+}
+.thoughtTitle {
+  margin: 20px 0 28px;
+}
+
+@media (min-width: 900px) {
+  .intro {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    align-items: start;
+    padding-bottom: 180px;
+  }
+  .portrait {
+    grid-column: 1 / span 5;
+    position: sticky;
+    top: calc(var(--header-h) + 32px);
+    margin: 0 0 0 calc(var(--gutter) * -1);
+  }
+  .text {
+    grid-column: 7 / span 5;
+    margin-top: 40px;
+  }
+  .name {
+    font-size: 34px;
+  }
+  .body {
+    margin-top: 48px;
+  }
+  .exp > div {
+    display: grid;
+    grid-template-columns: 11em 1fr;
+    gap: 16px;
+  }
+  .exp dd {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .fields {
+    padding: 150px 0 160px;
+  }
+  .fields :global(.container) {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+  }
+  .fields :global(.container) > :nth-child(1),
+  .fields :global(.container) > :nth-child(2) {
+    grid-column: 1 / span 4;
+  }
+  .fieldList {
+    grid-column: 5 / span 8;
+    grid-row: 1 / span 3;
+    margin: 0;
+  }
+  .fieldList li {
+    grid-template-columns: 72px 1fr 1.3fr;
+    column-gap: 24px;
+    align-items: baseline;
+    padding: 36px 0 38px;
+  }
+  .fieldText {
+    grid-column: 3;
+    margin: 0;
+  }
+
+  .thought {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    align-items: center;
+    padding-top: 180px;
+    padding-bottom: 200px;
+  }
+  .thoughtPhoto {
+    grid-column: 7 / span 6;
+    grid-row: 1;
+  }
+  .thoughtText {
+    grid-column: 1 / span 5;
+    grid-row: 1;
+    margin: 0;
+  }
+}

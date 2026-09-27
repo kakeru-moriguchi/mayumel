@@ -1,0 +1,31 @@
+.list {
+  border-top: 1px solid var(--c-line);
+}
+.list > div {
+  display: grid;
+  grid-template-columns: 5.5em 1fr;
+  gap: 12px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--c-line);
+  font-size: 14px;
+  line-height: 1.9;
+}
+.list dt {
+  color: var(--c-ink-soft);
+  letter-spacing: 0.12em;
+}
+.list dd a {
+  display: inline-block;
+  min-height: 24px;
+  border-bottom: 1px solid var(--c-line);
+}
+.map {
+  margin-top: 20px;
+}
+@media (min-width: 900px) {
+  .list > div {
+    grid-template-columns: 7em 1fr;
+    padding: 20px 0;
+    font-size: 15px;
+  }
+}

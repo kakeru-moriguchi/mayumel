@@ -1,0 +1,39 @@
+.section {
+  padding-bottom: 96px;
+}
+.photo {
+  margin: 0 calc(var(--gutter) * -1);
+}
+.info {
+  margin-top: 40px;
+}
+.note {
+  margin-top: 32px;
+  font-size: 13px;
+  line-height: 2;
+  color: var(--c-ink-soft);
+}
+.map {
+  margin-top: 48px;
+}
+@media (min-width: 900px) {
+  .section {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    align-items: start;
+    padding-bottom: 160px;
+  }
+  .photo {
+    grid-column: 1 / span 7;
+    margin: 0 0 0 calc(var(--gutter) * -1);
+  }
+  .info {
+    grid-column: 9 / span 4;
+    margin-top: 0;
+  }
+  .map {
+    grid-column: 1 / -1;
+    margin-top: 96px;
+  }
+}

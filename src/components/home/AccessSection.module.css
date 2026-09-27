@@ -1,0 +1,32 @@
+.section {
+  padding-bottom: 96px;
+}
+.heading {
+  margin: 20px 0 32px;
+}
+.visual {
+  margin: 48px calc(var(--gutter) * -1) 0 0;
+}
+.map {
+  margin-top: 12px;
+}
+@media (min-width: 900px) {
+  .section {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    align-items: start;
+    padding-bottom: 120px;
+  }
+  .info {
+    grid-column: 1 / span 5;
+    margin-top: 64px;
+  }
+  .heading {
+    margin-bottom: 48px;
+  }
+  .visual {
+    grid-column: 7 / span 6;
+    margin: 0 calc(var(--gutter) * -1) 0 0;
+  }
+}

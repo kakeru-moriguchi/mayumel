@@ -1,0 +1,76 @@
+.button {
+  display: inline-grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 32px;
+  row-gap: 4px;
+  align-items: center;
+  min-width: 300px;
+  padding: 16px 22px 17px;
+  border: 1px solid currentColor;
+  transition:
+    background-color 0.5s var(--ease),
+    color 0.5s var(--ease);
+}
+.meta {
+  grid-column: 1;
+  font-family: var(--f-en);
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  opacity: 0.8;
+}
+.label {
+  grid-column: 1;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  line-height: 1.6;
+}
+.arrow {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  position: relative;
+  width: 30px;
+  height: 1px;
+  background: currentColor;
+  transition: transform 0.5s var(--ease);
+}
+.arrow::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -3px;
+  width: 7px;
+  height: 1px;
+  background: currentColor;
+  transform: rotate(35deg);
+  transform-origin: right center;
+}
+.button:hover .arrow {
+  transform: translateX(6px);
+}
+
+.ink {
+  color: var(--c-ink);
+}
+.ink:hover {
+  background: var(--c-ink);
+  color: var(--c-paper);
+}
+.paper {
+  color: var(--c-night-ink);
+}
+.paper:hover {
+  background: var(--c-night-ink);
+  color: var(--c-night);
+}
+
+@media (max-width: 899px) {
+  .button {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    padding: 18px 20px;
+  }
+}

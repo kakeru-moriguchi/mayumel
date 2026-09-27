@@ -1,0 +1,40 @@
+.header {
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+.title {
+  margin-top: 24px;
+  font-size: clamp(21px, 6vw, 26px);
+  line-height: 1.7;
+  letter-spacing: 0.12em;
+}
+.lead {
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 2.1;
+  color: var(--c-ink-soft);
+}
+@media (min-width: 900px) {
+  .header {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  .header > :first-child {
+    grid-column: 1 / span 4;
+    align-self: start;
+    margin-top: 22px;
+  }
+  .title {
+    grid-column: 5 / span 7;
+    margin: 0;
+    font-size: clamp(28px, 2.6vw, 38px);
+  }
+  .lead {
+    grid-column: 5 / span 5;
+    margin-top: 32px;
+    font-size: 15px;
+  }
+}

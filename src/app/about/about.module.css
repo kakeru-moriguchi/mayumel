@@ -1,0 +1,116 @@
+.statement {
+  padding-bottom: 120px;
+}
+.photo {
+  width: 88%;
+  margin-left: auto;
+  margin-right: calc(var(--gutter) * -1);
+}
+.text {
+  margin-top: 48px;
+}
+.name {
+  font-family: var(--f-en);
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin-bottom: 28px;
+}
+.name span {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--f-body);
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  color: var(--c-ink-soft);
+}
+.link {
+  margin-top: 32px;
+}
+
+.pillars {
+  padding-top: 24px;
+  padding-bottom: 120px;
+}
+.pillarList {
+  margin-top: 40px;
+}
+.pillarList li {
+  padding: 32px 0 36px;
+  border-top: 1px solid var(--c-line);
+}
+.pillarEn {
+  font-family: var(--f-en);
+  font-style: italic;
+  font-size: 34px;
+  line-height: 1.2;
+  color: var(--c-brown);
+}
+.pillarJa {
+  margin-top: 12px;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+}
+.pillarText {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--c-ink-soft);
+}
+.more {
+  margin-top: 16px;
+}
+
+@media (min-width: 900px) {
+  .statement {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    align-items: end;
+    padding-bottom: 200px;
+  }
+  .photo {
+    grid-column: 1 / span 5;
+    width: auto;
+    margin: 0 0 0 calc(var(--gutter) * -1);
+  }
+  .text {
+    grid-column: 7 / span 5;
+    margin: 0 0 40px;
+  }
+  .name {
+    font-size: 44px;
+  }
+
+  .pillars {
+    padding-bottom: 200px;
+  }
+  .pillarList {
+    margin-top: 56px;
+  }
+  /* 一行ずつ右へずらし、誌面の目次のように */
+  .pillarList li {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    align-items: baseline;
+    padding: 44px 0 48px;
+  }
+  .pillarEn {
+    grid-column: 1 / span 6;
+    padding-left: calc(var(--i) * 7%);
+    font-size: clamp(40px, 4.4vw, 64px);
+  }
+  .pillarJa {
+    grid-column: 7 / span 2;
+    margin: 0;
+  }
+  .pillarText {
+    grid-column: 9 / span 4;
+    margin: 0;
+  }
+  .more {
+    margin-top: 24px;
+  }
+}
