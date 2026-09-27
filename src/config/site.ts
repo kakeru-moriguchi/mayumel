@@ -7,15 +7,32 @@
  * 決まったら値を入れるだけで、ACCESS / CONTACT / フッター / 構造化データに反映されます。
  */
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : 'http://localhost:3000');
+/**
+ * サイトのURL（canonical / OGP / sitemap に使用）。
+ * NEXT_PUBLIC_SITE_URL → Vercel の本番URL → localhost の順に使います。
+ * 「https://」の付け忘れや空欄でもビルドが止まらないよう補正します。
+ */
+function resolveSiteUrl(): string {
+  const candidates = [
+    process.env.NEXT_PUBLIC_SITE_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL,
+    process.env.VERCEL_URL,
+  ];
+  for (const raw of candidates) {
+    const value = raw?.trim();
+    if (!value) continue;
+    try {
+      return new URL(/^https?:\/\//.test(value) ? value : `https://${value}`).origin;
+    } catch {
+      // 不正な値は無視して次の候補へ
+    }
+  }
+  return 'http://localhost:3000';
+}
 
 export const site = {
   name: 'MayuMel',
-  url: siteUrl.replace(/\/$/, ''),
+  url: resolveSiteUrl(),
   tagline: ['Parfait', 'Dessert', 'Menu Development'],
   description:
     'MayuMel（マユメル）は、パティシエ・長谷藍一郎によるデザート制作の屋号です。パフェ、コースデザート、メニュー開発、商品開発を中心に、店舗やブランドに合わせたデザートを制作しています。代々木八幡・代々木公園エリア。',
