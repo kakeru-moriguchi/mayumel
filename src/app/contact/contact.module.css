@@ -1,0 +1,183 @@
+.main {
+  padding-bottom: 96px;
+}
+.dm {
+  padding: 40px 0 48px;
+  border-top: 1px solid var(--c-ink);
+  border-bottom: 1px solid var(--c-line);
+}
+.dmTitle {
+  font-size: 18px;
+  letter-spacing: 0.12em;
+}
+.dmTitle span {
+  display: block;
+  font-family: var(--f-en);
+  font-style: italic;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: var(--c-brown);
+}
+.handle {
+  margin: 12px 0 32px;
+  font-family: var(--f-en);
+  font-style: italic;
+  font-size: clamp(36px, 10vw, 48px);
+  line-height: 1.2;
+}
+.small {
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 2;
+  color: var(--c-ink-soft);
+}
+.small a {
+  border-bottom: 1px solid currentColor;
+}
+.check {
+  margin-top: 64px;
+}
+.checkTitle {
+  margin-top: 20px;
+}
+.checkList {
+  margin-top: 24px;
+  border-top: 1px solid var(--c-line);
+}
+.checkList li {
+  position: relative;
+  padding: 14px 0 14px 22px;
+  border-bottom: 1px solid var(--c-line);
+  font-size: 14px;
+  line-height: 1.9;
+}
+.checkList li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 27px;
+  width: 8px;
+  height: 1px;
+  background: var(--c-brown);
+}
+
+.flow {
+  padding-bottom: 96px;
+}
+.flowTitle {
+  margin-top: 20px;
+}
+.flowList {
+  margin-top: 32px;
+}
+.flowList li {
+  padding: 22px 0;
+  border-top: 1px solid var(--c-line);
+}
+.flowList span {
+  font-family: var(--f-en);
+  color: var(--c-brown);
+}
+.flowList h3 {
+  margin-top: 4px;
+  font-size: 17px;
+}
+.flowList p {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--c-ink-soft);
+}
+
+.other {
+  padding-bottom: 120px;
+}
+.otherTitle {
+  font-size: 15px;
+  letter-spacing: 0.14em;
+}
+.otherList {
+  margin-top: 20px;
+  border-top: 1px solid var(--c-line);
+}
+.otherList > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--c-line);
+  font-size: 14px;
+}
+.otherList dt {
+  color: var(--c-ink-soft);
+  font-size: 13px;
+}
+.otherList dd > a:not([class]) {
+  display: inline-block;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--c-line);
+}
+
+@media (min-width: 900px) {
+  .main {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    align-items: start;
+    padding-bottom: 160px;
+  }
+  .dm {
+    grid-column: 1 / span 6;
+    padding: 56px 0 64px;
+  }
+  .handle {
+    font-size: clamp(48px, 5vw, 76px);
+  }
+  .check {
+    grid-column: 8 / span 5;
+    margin-top: 56px;
+  }
+
+  .flow,
+  .other {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+  }
+  .flow > :nth-child(1),
+  .flowTitle {
+    grid-column: 1 / span 4;
+  }
+  .flowList {
+    grid-column: 5 / span 8;
+    grid-row: 1 / span 3;
+    margin: 0;
+  }
+  .flowList li {
+    display: grid;
+    grid-template-columns: 72px 1fr 1.3fr;
+    column-gap: 24px;
+    align-items: baseline;
+    padding: 30px 0;
+  }
+  .flowList h3,
+  .flowList p {
+    margin: 0;
+  }
+  .flow {
+    padding-bottom: 140px;
+  }
+  .otherTitle {
+    grid-column: 1 / span 4;
+  }
+  .otherList {
+    grid-column: 5 / span 8;
+    margin: 0;
+  }
+  .otherList > div {
+    grid-template-columns: 14em 1fr;
+    align-items: center;
+  }
+  .other {
+    padding-bottom: 180px;
+  }
+}

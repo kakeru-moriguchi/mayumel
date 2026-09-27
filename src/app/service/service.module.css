@@ -1,0 +1,302 @@
+.toc {
+  padding-bottom: 72px;
+}
+.toc ol {
+  border-top: 1px solid var(--c-line);
+}
+.toc li {
+  border-bottom: 1px solid var(--c-line);
+}
+.toc a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding: 12px 0;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+}
+.toc a span {
+  font-family: var(--f-en);
+  color: var(--c-brown);
+}
+.toc a:hover {
+  color: var(--c-brown);
+}
+
+/* ---------- 各サービス ---------- */
+.item {
+  padding-top: 40px;
+  padding-bottom: 96px;
+}
+.photo {
+  margin: 0 calc(var(--gutter) * -1);
+}
+.v2 .photo,
+.v4 .photo {
+  width: 72%;
+  margin: 0;
+}
+.v4 .photo {
+  margin-left: auto;
+  margin-right: calc(var(--gutter) * -1);
+}
+.text {
+  margin-top: 32px;
+}
+.no {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  font-family: var(--f-en);
+  font-size: 15px;
+  color: var(--c-brown);
+}
+.no span {
+  font-style: italic;
+  letter-spacing: 0.08em;
+}
+.title {
+  margin-top: 12px;
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+}
+.summary {
+  margin: 16px 0 20px;
+  font-family: var(--f-mincho);
+  font-size: 16px;
+  line-height: 1.9;
+  letter-spacing: 0.08em;
+  color: var(--c-ink-soft);
+}
+.items {
+  margin-top: 28px;
+  border-top: 1px solid var(--c-line);
+}
+.items li {
+  position: relative;
+  padding: 12px 0 12px 20px;
+  border-bottom: 1px solid var(--c-line);
+  font-size: 14px;
+  line-height: 1.8;
+}
+.items li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  width: 8px;
+  height: 1px;
+  background: var(--c-brown);
+}
+
+/* ---------- ご相談先 ---------- */
+.audience {
+  background: var(--c-paper-deep);
+  padding: 88px 0;
+}
+.audienceTitle {
+  margin-top: 20px;
+}
+.audienceList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0;
+  margin-top: 32px;
+  font-family: var(--f-mincho);
+  font-size: 18px;
+  line-height: 2.2;
+  letter-spacing: 0.1em;
+}
+.audienceList li:not(:last-child)::after {
+  content: '／';
+  margin: 0 0.4em;
+  color: var(--c-brown);
+  opacity: 0.6;
+}
+.audienceNote {
+  margin-top: 28px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--c-ink-soft);
+}
+
+/* ---------- 流れ ---------- */
+.flow {
+  padding-top: 96px;
+  padding-bottom: 72px;
+}
+.flowTitle {
+  margin-top: 20px;
+}
+.flowList {
+  margin-top: 36px;
+  counter-reset: flow;
+}
+.flowList li {
+  padding: 24px 0;
+  border-top: 1px solid var(--c-line);
+}
+.flowNo {
+  font-family: var(--f-en);
+  font-size: 15px;
+  color: var(--c-brown);
+}
+.flowList h3 {
+  margin-top: 4px;
+  font-size: 17px;
+  letter-spacing: 0.1em;
+}
+.flowList p {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--c-ink-soft);
+}
+.flowCta {
+  margin-top: 40px;
+}
+
+@media (min-width: 900px) {
+  .toc {
+    padding-bottom: 120px;
+  }
+  .toc ol {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 40px;
+    border: 0;
+  }
+  .toc li {
+    border: 0;
+  }
+  .toc a {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--c-line);
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 180px;
+  }
+  .photo,
+  .v2 .photo,
+  .v4 .photo {
+    width: auto;
+    margin: 0;
+  }
+  .text {
+    margin: 0;
+  }
+  .title {
+    font-size: 28px;
+  }
+
+  /* 01: 大きな縦写真・左 */
+  .v0 .photo {
+    grid-column: 1 / span 6;
+    margin-left: calc(var(--gutter) * -1);
+  }
+  .v0 .text {
+    grid-column: 8 / span 4;
+  }
+  /* 02: 横写真・右に大きく、文章は上寄せ */
+  .v1 {
+    align-items: start;
+  }
+  .v1 .photo {
+    grid-column: 5 / span 8;
+    grid-row: 1;
+    margin-right: calc(var(--gutter) * -1);
+  }
+  .v1 .text {
+    grid-column: 1 / span 4;
+    grid-row: 1;
+    padding-top: 64px;
+  }
+  /* 03: 小さな正方形・中央寄り */
+  .v2 .photo {
+    grid-column: 3 / span 4;
+  }
+  .v2 .text {
+    grid-column: 8 / span 4;
+  }
+  /* 04: 縦写真・右、文章は下寄せ */
+  .v3 {
+    align-items: end;
+  }
+  .v3 .photo {
+    grid-column: 8 / span 4;
+    grid-row: 1;
+  }
+  .v3 .text {
+    grid-column: 2 / span 5;
+    grid-row: 1;
+  }
+  /* 05: 横写真・左端、文章は右 */
+  .v4 .photo {
+    grid-column: 1 / span 6;
+    margin-left: calc(var(--gutter) * -1);
+  }
+  .v4 .text {
+    grid-column: 8 / span 5;
+  }
+
+  .audience {
+    padding: 140px 0;
+  }
+  .audience :global(.container) {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+  }
+  .audience :global(.container) > * {
+    grid-column: 1 / span 4;
+  }
+  .audienceList {
+    grid-column: 5 / span 8 !important;
+    grid-row: 1 / span 3;
+    margin: 0;
+    font-size: 24px;
+    line-height: 2.1;
+  }
+  .audienceNote {
+    grid-column: 5 / span 6 !important;
+  }
+
+  .flow {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    padding-top: 160px;
+    padding-bottom: 120px;
+  }
+  .flow > :nth-child(1),
+  .flowTitle {
+    grid-column: 1 / span 4;
+  }
+  .flowList {
+    grid-column: 5 / span 8;
+    grid-row: 1 / span 3;
+    margin: 0;
+  }
+  .flowList li {
+    display: grid;
+    grid-template-columns: 72px 1fr 1.3fr;
+    column-gap: 24px;
+    align-items: baseline;
+    padding: 32px 0;
+  }
+  .flowList h3,
+  .flowList p {
+    margin: 0;
+  }
+  .flowCta {
+    grid-column: 5 / span 8;
+    margin-top: 48px;
+  }
+}

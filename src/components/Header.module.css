@@ -136,6 +136,9 @@
   opacity: 0;
   transition: opacity 0.4s var(--ease);
 }
+.panel[hidden] {
+  display: none;
+}
 .panelOpen {
   opacity: 1;
 }

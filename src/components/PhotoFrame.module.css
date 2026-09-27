@@ -87,6 +87,19 @@ a:hover .img {
   font-variant-numeric: tabular-nums;
 }
 
+/* 比率表示は画面幅に合わせて切り替え */
+.ratioPc {
+  display: none;
+}
+@media (min-width: 900px) {
+  .ratioSp {
+    display: none;
+  }
+  .ratioPc {
+    display: inline;
+  }
+}
+
 /* ヒーローなど、下端に文字が重なる写真はラベルを上に */
 .labelTop .label,
 .labelTop .ratio {
@@ -96,7 +109,7 @@ a:hover .img {
 
 /* 小さな枠では比率表示を省略 */
 @container (max-width: 240px) {
-  .ratio {
+  .ratio.ratio {
     display: none;
   }
   .label {

@@ -1,0 +1,45 @@
+.list {
+  padding-bottom: 140px;
+}
+.list ul {
+  border-top: 1px solid var(--c-line);
+}
+.list li {
+  border-bottom: 1px solid var(--c-line);
+}
+.list a {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px 0;
+}
+.list time {
+  font-family: var(--f-en);
+  font-size: 14px;
+  color: var(--c-brown);
+}
+.article {
+  max-width: 760px;
+  padding-top: 72px;
+  padding-bottom: 140px;
+}
+.date {
+  display: block;
+  margin-top: 32px;
+  font-family: var(--f-en);
+  color: var(--c-brown);
+}
+.title {
+  margin-top: 8px;
+  font-size: 26px;
+}
+.body {
+  margin: 40px 0 56px;
+}
+@media (min-width: 900px) {
+  .list a {
+    flex-direction: row;
+    gap: 40px;
+    padding: 28px 0;
+  }
+}

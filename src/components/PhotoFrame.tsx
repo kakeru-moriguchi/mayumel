@@ -59,8 +59,11 @@ export default function PhotoFrame({
           <span className={styles.label} aria-hidden="true">
             {label}
           </span>
-          <span className={styles.ratio} aria-hidden="true">
+          <span className={`${styles.ratio} ${styles.ratioSp}`} aria-hidden="true">
             {(ratioSp ?? ratio).replace('/', ' : ')}
+          </span>
+          <span className={`${styles.ratio} ${styles.ratioPc}`} aria-hidden="true">
+            {ratio.replace('/', ' : ')}
           </span>
         </div>
       )}
