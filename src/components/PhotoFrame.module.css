@@ -1,0 +1,107 @@
+.frame {
+  position: relative;
+  container-type: inline-size;
+  width: 100%;
+  aspect-ratio: var(--ratio-sp);
+  overflow: hidden;
+  background: var(--c-frame);
+}
+
+@media (min-width: 900px) {
+  .frame {
+    aspect-ratio: var(--ratio);
+  }
+}
+
+.img {
+  object-fit: cover;
+  transition:
+    transform 1.6s var(--ease),
+    opacity 1.2s var(--ease);
+}
+
+/* 画像の微細なホバー変化（リンク内のみ） */
+a:hover .img {
+  transform: scale(1.015);
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  background: var(--c-frame);
+}
+
+/* 細い内枠 */
+.placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(46, 42, 38, 0.14);
+  pointer-events: none;
+}
+
+/* 中心の小さな十字（トンボ） */
+.corner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+}
+.corner::before,
+.corner::after {
+  content: '';
+  position: absolute;
+  background: rgba(46, 42, 38, 0.28);
+}
+.corner::before {
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+}
+.corner::after {
+  top: 50%;
+  left: 0;
+  height: 1px;
+  width: 100%;
+}
+
+.label,
+.ratio {
+  position: absolute;
+  bottom: 20px;
+  font-family: var(--f-en);
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  color: var(--c-ink-soft);
+}
+.label {
+  left: 22px;
+  font-style: italic;
+}
+.ratio {
+  right: 22px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ヒーローなど、下端に文字が重なる写真はラベルを上に */
+.labelTop .label,
+.labelTop .ratio {
+  top: 22px;
+  bottom: auto;
+}
+
+/* 小さな枠では比率表示を省略 */
+@container (max-width: 240px) {
+  .ratio {
+    display: none;
+  }
+  .label {
+    left: 18px;
+    bottom: 18px;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,124 @@
+.section {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+.heading {
+  margin-top: 20px;
+}
+.handle {
+  display: inline-flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+.handleSub {
+  font-family: var(--f-en);
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  color: var(--c-brown);
+}
+.handleMain {
+  font-family: var(--f-en);
+  font-style: italic;
+  font-size: clamp(38px, 11vw, 52px);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  transition: color 0.4s var(--ease);
+}
+.handle:hover .handleMain {
+  color: var(--c-brown);
+}
+.text {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--c-ink-soft);
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 36px;
+}
+.personal {
+  margin-top: 64px;
+  padding-top: 20px;
+  border-top: 1px solid var(--c-line);
+}
+.personalLabel {
+  font-family: var(--f-en);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: var(--c-brown);
+}
+.personalName {
+  margin-top: 8px;
+  font-family: var(--f-mincho);
+  font-size: 17px;
+  letter-spacing: 0.14em;
+}
+.personalHandle {
+  display: inline-block;
+  padding: 6px 0;
+  font-family: var(--f-en);
+  font-size: 20px;
+  border-bottom: 1px solid var(--c-line);
+}
+.personalHandle:hover {
+  color: var(--c-brown);
+}
+
+.feedList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 56px;
+}
+.feedList li {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--c-frame);
+}
+.feedList img {
+  object-fit: cover;
+}
+
+@media (max-width: 899px) {
+  .actions {
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 900px) {
+  .section {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    padding-top: 180px;
+    padding-bottom: 180px;
+  }
+  .main {
+    grid-column: 1 / span 7;
+  }
+  .handleMain {
+    font-size: clamp(56px, 6vw, 92px);
+  }
+  .actions {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+  }
+  .personal {
+    grid-column: 9 / span 4;
+    align-self: end;
+    margin: 0;
+  }
+  .feed {
+    grid-column: 1 / -1;
+  }
+  .feedList {
+    grid-template-columns: 2fr 1fr 1fr 1.4fr 1fr;
+    align-items: start;
+  }
+}

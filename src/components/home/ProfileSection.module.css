@@ -1,0 +1,109 @@
+.section {
+  padding-bottom: 140px;
+}
+.photos {
+  position: relative;
+  padding-bottom: 72px;
+}
+.portrait {
+  width: 82%;
+}
+.sub {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 42%;
+  border: 8px solid var(--c-paper);
+  border-right: 0;
+  border-bottom: 0;
+}
+.text {
+  margin-top: 48px;
+}
+.name {
+  margin-top: 28px;
+  font-size: 26px;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+}
+.title {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--f-body);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--c-ink-soft);
+}
+.lead {
+  margin: 36px 0 32px;
+  font-family: var(--f-mincho);
+  font-size: 19px;
+  line-height: 1.95;
+  letter-spacing: 0.1em;
+}
+.exp {
+  margin-bottom: 36px;
+  border-top: 1px solid var(--c-line);
+}
+.exp > div {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--c-line);
+}
+.exp dt {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.7;
+}
+.exp dd {
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--c-ink-soft);
+}
+.link {
+  margin-top: 28px;
+}
+
+@media (min-width: 900px) {
+  .section {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    padding-bottom: 280px;
+  }
+  .photos {
+    grid-column: 1 / span 6;
+    padding-bottom: 0;
+  }
+  .portrait {
+    width: 76%;
+  }
+  .sub {
+    width: 38%;
+    right: 0;
+    bottom: -96px;
+    border-width: 12px;
+  }
+  .text {
+    grid-column: 8 / span 5;
+    margin-top: 120px;
+  }
+  .name {
+    font-size: 30px;
+  }
+  .lead {
+    font-size: 22px;
+    margin: 48px 0 44px;
+  }
+  .exp > div {
+    display: grid;
+    grid-template-columns: 11em 1fr;
+    gap: 16px;
+    padding: 18px 0;
+  }
+  .exp dd {
+    margin-top: 0;
+    font-size: 14px;
+  }
+}

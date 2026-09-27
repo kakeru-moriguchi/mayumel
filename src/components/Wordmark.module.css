@@ -1,0 +1,22 @@
+.word {
+  font-family: var(--f-en);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.word i {
+  font-style: italic;
+  font-weight: 400;
+  margin-left: 0.02em;
+}
+.s {
+  font-size: 22px;
+}
+.m {
+  font-size: 26px;
+}
+.logo {
+  height: 32px;
+  width: auto;
+}
