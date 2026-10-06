@@ -4,6 +4,7 @@ import { site } from '@/config/site';
 export const alt = `${site.name} — Parfait / Dessert / Menu Development`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
+export const dynamic = 'force-static';
 
 /**
  * 既定の OGP 画像（文字組み）。

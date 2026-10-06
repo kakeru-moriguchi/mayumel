@@ -2,6 +2,8 @@ import type { MetadataRoute } from 'next';
 import { navigation, site } from '@/config/site';
 import { getNewsList } from '@/lib/news';
 
+export const dynamic = 'force-static';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages: MetadataRoute.Sitemap = navigation.map((n) => ({
     url: `${site.url}${n.href === '/' ? '' : n.href}`,

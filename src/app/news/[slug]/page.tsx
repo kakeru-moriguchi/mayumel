@@ -10,9 +10,16 @@ type Props = { params: Promise<{ slug: string }> };
 
 export const dynamicParams = false;
 
+/**
+ * 静的書き出しでは generateStaticParams が空だとビルドできないため、
+ * 記事が無い間だけ404になる予約スラッグを1件生成します。
+ */
+const disabledNewsSlug = '__disabled__';
+
 export async function generateStaticParams() {
-  if (!site.features.news) return [];
-  return (await getNewsList()).map((p) => ({ slug: p.slug }));
+  if (!site.features.news) return [{ slug: disabledNewsSlug }];
+  const posts = await getNewsList();
+  return posts.length > 0 ? posts.map((p) => ({ slug: p.slug })) : [{ slug: disabledNewsSlug }];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
