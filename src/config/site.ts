@@ -9,12 +9,13 @@
 
 /**
  * サイトのURL（canonical / OGP / sitemap に使用）。
- * NEXT_PUBLIC_SITE_URL → Vercel の本番URL → localhost の順に使います。
+ * NEXT_PUBLIC_SITE_URL → Cloudflare Pages のURL → Vercel の本番URL → localhost の順に使います。
  * 「https://」の付け忘れや空欄でもビルドが止まらないよう補正します。
  */
 function resolveSiteUrl(): string {
   const candidates = [
     process.env.NEXT_PUBLIC_SITE_URL,
+    process.env.CF_PAGES_URL,
     process.env.VERCEL_PROJECT_PRODUCTION_URL,
     process.env.VERCEL_URL,
   ];

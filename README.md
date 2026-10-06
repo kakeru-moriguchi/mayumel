@@ -4,7 +4,7 @@
 パフェ・コースデザート・メニュー開発・商品開発の作品と考え方を伝え、Instagram DM での相談につなげることを目的にしています。
 
 - Next.js（App Router）/ React / TypeScript
-- すべて静的生成（Vercel にそのままデプロイ可能）
+- すべて静的生成（Cloudflare Pages で配信）
 - 設計方針は [`docs/DESIGN.md`](docs/DESIGN.md) を参照
 
 ---
@@ -12,7 +12,7 @@
 ## 目次
 
 1. [セットアップ](#セットアップ)
-2. [Vercel へのデプロイ](#vercel-へのデプロイ)
+2. [Cloudflare Pages へのデプロイ](#cloudflare-pages-へのデプロイ)
 3. [情報・文章の編集場所](#情報文章の編集場所)
 4. [写真の差し替え（推奨サイズ・比率・配置場所）](#写真の差し替え)
 5. [ロゴの差し替え](#ロゴの差し替え)
@@ -34,18 +34,38 @@ npm run dev        # http://localhost:3000
 | コマンド | 内容 |
 | --- | --- |
 | `npm run dev` | 開発サーバー |
-| `npm run build` | 本番ビルド |
-| `npm start` | ビルド結果を起動 |
+| `npm run build` | 本番ビルド（`out/` に静的ファイルを出力） |
 | `npm run typecheck` | 型チェック |
 
 Node.js 20 以上（推奨 22）。
 
-## Vercel へのデプロイ
+## Cloudflare Pages へのデプロイ
 
-1. Vercel で GitHub のこのリポジトリをインポート（Framework: Next.js は自動判定）
-2. 独自ドメインを使う場合は、環境変数 `NEXT_PUBLIC_SITE_URL` にドメインを設定（例: `https://mayumel.jp`）
-   - 未設定の場合は Vercel の本番 URL が自動で使われます
-3. デプロイ
+1. [Cloudflare ダッシュボード](https://dash.cloudflare.com/)を開きます
+2. 左側の **Workers & Pages** を押します
+3. **Create application** → **Pages** → **Connect to Git** の順に押します
+4. GitHub を選び、リポジトリ **`kakeru-moriguchi/mayumel`** を選択して **Begin setup** を押します
+5. ビルド設定を次のとおり入力します
+
+   | 項目 | 設定値 |
+   | --- | --- |
+   | Production branch | `main` |
+   | Framework preset | `Next.js (Static HTML Export)` |
+   | Build command | `npm run build` |
+   | Build output directory | `out` |
+
+6. **Environment variables (advanced)** を開き、次の値を追加します
+
+   | 変数名 | 値 |
+   | --- | --- |
+   | `NODE_VERSION` | `22` |
+   | `NEXT_PUBLIC_SITE_URL` | 公開URL（例：`https://mayumel.pages.dev`、独自ドメイン設定後はそのURL） |
+
+7. **Save and Deploy** を押します
+8. デプロイ完了後、表示されたURLを開き、各ページ・画像・`/sitemap.xml`・`/robots.txt`・OGP画像を確認します
+
+`NEXT_PUBLIC_SITE_URL` が未設定の場合は、Cloudflare Pages が自動設定する `CF_PAGES_URL` を使います。
+ローカルで本番出力を確認するときは、`npm run build` の後に `npx serve out` を実行してください。
 
 ---
 
@@ -73,9 +93,9 @@ Node.js 20 以上（推奨 22）。
 ファイルが無い間は「Parfait Image」などのラベル付きの写真枠が表示されます。
 
 - 形式：JPEG（推奨）/ WebP / PNG
-- 容量：1枚 1MB 以下を目安（表示時に自動で WebP / AVIF に変換・リサイズされます）
+- 容量：1枚 1MB 以下を目安（静的配信では自動変換されないため、WebP での書き出しを推奨）
 - 下の「推奨サイズ」以上の解像度で書き出してください
-- 画像を追加したら再ビルド（Vercel なら push で自動）で反映されます
+- 画像を追加したら再ビルド（Cloudflare Pages なら push で自動）で反映されます
 - ファイル名を変えたい場合は `src/content/images.ts` / `src/content/works.ts` の `src` を変更
 - 写真の説明文（alt）も同じファイルで変更できます
 
@@ -200,7 +220,7 @@ Instagram Graph API 等で取得した投稿を `posts` に渡すと、HOME の 
 - `sitemap.xml` / `robots.txt` を自動生成（`src/app/sitemap.ts`, `robots.ts`）
 - 構造化データ：WebSite / Organization（MayuMel）/ Person（長谷藍一郎）/ BreadcrumbList（未定の項目は出力しない）
 - 各ページ h1 は1つ。h2 / h3 はセクション構造に沿って配置
-- 画像は `next/image` で自動最適化（AVIF / WebP・遅延読み込み・サイズ指定で CLS 防止）
+- 画像は `next/image` で遅延読み込み・サイズ指定を行い、静的ファイルとして配信
 - フォントは `next/font` で自己ホスト
 - キーボード操作：スキップリンク、フォーカス表示、メニューは Esc で閉じ、フォーカスをメニュー内に保持
 - `prefers-reduced-motion` 設定時はアニメーションを無効化

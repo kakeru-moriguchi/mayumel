@@ -1,12 +1,13 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  output: 'export',
+  trailingSlash: true,
   reactStrictMode: true,
   poweredByHeader: false,
   images: {
-    formats: ['image/avif', 'image/webp'],
-    // Instagram 投稿や CMS の画像を表示する場合はここにホストを追加します
-    remotePatterns: [],
+    // Cloudflare Pages の静的配信では画像最適化サーバーを使わない
+    unoptimized: true,
   },
 };
 
